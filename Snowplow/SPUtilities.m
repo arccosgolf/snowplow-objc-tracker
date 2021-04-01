@@ -31,7 +31,6 @@
 
 #if SNOWPLOW_TARGET_IOS
 
-#import "OpenIDFA.h"
 #import <UIKit/UIScreen.h>
 #import <CoreTelephony/CTCarrier.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
@@ -84,18 +83,6 @@
 
 + (bool ) isUUIDString:(nonnull NSString *)uuidString {
     return [[NSUUID alloc] initWithUUIDString:uuidString] != nil;
-}
-
-+ (NSString *) getOpenIdfa {
-    NSString * idfa = nil;
-#if SNOWPLOW_TARGET_IOS
-#ifndef SNOWPLOW_NO_OPENIDFA
-    if (!SNOWPLOW_iOS_9_OR_LATER) {
-        idfa = [OpenIDFA sameDayOpenIDFA];
-    }
-#endif
-#endif
-    return idfa;
 }
 
 /*
